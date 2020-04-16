@@ -1,41 +1,27 @@
 "use strict";
-
 class Car {
   static getSpecs(car) {
-    console.log(
-    );
+    console.log(car);
   }
   constructor({ maxSpeed, price }) {
-    this.speed = 0;
-    this.price = price;
     this.maxSpeed = maxSpeed;
+    this.speed = 0;
     this.isOn = false;
     this.distance = 0;
+    this.price = price;
   }
+
   get _price() {
     return this.price;
   }
   set _price(value) {
     this.price = value;
   }
-  /*
-   * Добавь геттер и сеттер для свойства price,
-   * который будет работать с свойством цены автомобиля.
-   */
 
-  /*
-   * Добавь код для того чтобы завести автомобиль
-   * Записывает в свойство isOn значение true
-   */
   turnOn() {
     this.isOn = true;
   }
 
-  /*
-   * Добавь код для того чтобы заглушить автомобиль
-   * Записывает в свойство isOn значение false,
-   * и сбрасывает текущую скорость в 0
-   */
   turnOff() {
     this.isOn = false;
     if (this.isOn === false) {
@@ -43,33 +29,20 @@ class Car {
     }
   }
 
-  /*
-   * Добавялет к свойству speed полученное значение,
-   * при условии что результирующая скорость
-   * не больше чем значение свойства maxSpeed
-   */
   accelerate(value) {
     this.speed = value;
   }
 
-  /*
-   * Отнимает от свойства speed полученное значение,
-   * при условии что результирующая скорость не меньше нуля
-   */
   decelerate(value) {
     this.speed -= value;
   }
 
-  /*
-   * Добавляет в поле distance киллометраж (hours * speed),
-   * но только в том случае если машина заведена!
-   */
   drive(hours) {
-    this.distance = hours * this.speed;
+    this.distance += hours * this.speed;
   }
 }
-console.dir(Car);
 const mustang = new Car({ maxSpeed: 200, price: 2000 });
+
 mustang.turnOn();
 mustang.accelerate(50);
 mustang.drive(2);
